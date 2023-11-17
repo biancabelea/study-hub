@@ -18,6 +18,11 @@ const Register: React.FC = () => {
         setUser({ ...user, [name]: value });
     };
 
+    const handleRoleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        const { value } = e.target;
+        setUser({ ...user, userRole: value });
+    };
+
     const handleSkillChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { value } = e.target;
         setUser({ ...user, userSkills: value.split(',').map(skill => skill.trim()) });
@@ -57,7 +62,10 @@ const Register: React.FC = () => {
 
             <div>
                 <label htmlFor="role">Role:</label>
-                <input type="text" id="role" name="role" value={user.userRole} onChange={handleChange} required />
+                <select id="role" name="role" value={user.userRole} onChange={handleRoleChange} required>
+                    <option value="Student">Student</option>
+                    <option value="Mentor">Mentor</option>
+                </select>
             </div>
 
             <div>
