@@ -5,6 +5,7 @@ import './Register.css';
 import Chip from '@mui/material/Chip';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
+import { useNavigate } from 'react-router-dom';
 
 const skills = [
     'React',
@@ -48,6 +49,11 @@ function Register () {
             console.error('Registration failed', error);
         }
     };
+
+    const navigate = useNavigate();
+    const handleLoginClick = () => {
+        navigate('/login');
+    }
 
     return (
         <div>
@@ -117,6 +123,10 @@ function Register () {
             </div>
 
             <button type="submit">Register</button>
+            <div className="prompt">
+                Already have an account?
+                <a className="redirect" onClick={() => handleLoginClick()}> Login</a>
+            </div>
         </form>
         </div>
     );

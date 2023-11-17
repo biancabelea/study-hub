@@ -58,6 +58,10 @@ button:hover {
     background-color: var(--grey);
     width: 500px;
     padding: 80px 100px 100px 100px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .title {
@@ -67,4 +71,13 @@ button:hover {
     align-items: center;
     font-size: 30px;
     margin-bottom: 50px;
+}
+
+.redirect {
+    cursor: pointer;
+    color: darkred;
+}
+
+.prompt {
+    padding-top: 10px;
 }
