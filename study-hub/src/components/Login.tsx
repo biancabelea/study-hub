@@ -22,7 +22,7 @@ const Login = () => {
     }
 
     return (
-        <div className="login-form-container">
+        <div>
             <form className="login-form" onSubmit={handleSubmit}>
                 <div className="title">Login</div>
                 <div>
@@ -46,7 +46,7 @@ const Login = () => {
                     />
                 </div>
                 <button type="submit">Login</button>
-                <div>
+                <div className="prompt">
                     Don't have an account?
                     <a className= "redirect" onClick={() => handleLoginClick()}> Register</a>
                 </div>
