@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { login } from '../api/authAPI';
+import './Login.css'
+import { useNavigate} from "react-router-dom";
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -10,37 +12,46 @@ const Login = () => {
         try {
             const data = await login(email, password);
             console.log(data);
-            // Handle login success here
         } catch (error) {
-            console.error(error);
-            // Handle login error here
-        }
+            console.error(error);}
     };
 
+    const navigate = useNavigate();
+    const handleLoginClick = () => {
+        navigate('/register');
+    }
+
     return (
-        <form onSubmit={handleSubmit}>
-            <div>
-                <label htmlFor="email">Email:</label>
-                <input
-                    type="email"
-                    id="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                />
-            </div>
-            <div>
-                <label htmlFor="password">Password:</label>
-                <input
-                    type="password"
-                    id="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                />
-            </div>
-            <button type="submit">Login</button>
-        </form>
+        <div className="login-form-container">
+            <form className="login-form" onSubmit={handleSubmit}>
+                <div className="title">Login</div>
+                <div>
+                    <label htmlFor="email">Email:</label>
+                    <input
+                        type="email"
+                        id="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                    />
+                </div>
+                <div>
+                    <label htmlFor="password">Password:</label>
+                    <input
+                        type="password"
+                        id="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    />
+                </div>
+                <button type="submit">Login</button>
+                <div>
+                    Don't have an account?
+                    <a className= "redirect" onClick={() => handleLoginClick()}> Register</a>
+                </div>
+            </form>
+        </div>
     );
 };
 
