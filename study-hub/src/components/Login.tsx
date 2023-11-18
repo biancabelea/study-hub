@@ -22,7 +22,7 @@ const Login = () => {
     }
 
     return (
-        <div>
+        <div className="body-login">
             <form className="login-form" onSubmit={handleSubmit}>
                 <div className="title">Login</div>
                 <div>
