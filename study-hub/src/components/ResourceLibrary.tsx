@@ -36,6 +36,7 @@ function ResourceLibrary () {
     };
 
     return (
+        <div className="body-resources">
         <form onSubmit={handleSubmit}>
             <div className="title">Add a resource</div>
             <div>
@@ -73,6 +74,7 @@ function ResourceLibrary () {
 
             <button type="submit">Submit</button>
         </form>
+        </div>
     );
 }
 
