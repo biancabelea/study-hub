@@ -5,6 +5,7 @@ import Login from "./components/Login";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import ResourceLibrary from "./components/ResourceLibrary";
 import HomePage from "./components/HomePage";
+import Logout from "./components/Logout";
 
 function App() {
     return (

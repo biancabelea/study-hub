@@ -38,7 +38,7 @@ const Login = () => {
                 localStorage.setItem('userYear', userYear);
                 localStorage.setItem('userRole', userRole);
                 localStorage.setItem('userSkills', userSkills);
-                navigate('/home');
+                navigate('/');
             }
 
         } catch (error) {
