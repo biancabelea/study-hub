@@ -11,7 +11,7 @@
     padding: 0;
 }
 
-body {
+.body-register {
     height: 100vh;
     background-color: var(--dark-blue);
     display: flex;
