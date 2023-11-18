@@ -61,7 +61,10 @@
 button {
     cursor: pointer;
     padding: 10px 20px;
-    /*color: var(--dark-blue);*/
+    color: var(--dark-blue);
+}
+button:hover{
+    color:var(--white);
 }
 
 .homeContent{
