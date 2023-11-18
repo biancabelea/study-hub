@@ -3,26 +3,21 @@ import './ResourceLibrary.css';
 import {database, firestore, storage} from "../firebaseConfig";
 
 interface FormFields {
-    text?: string;
-    image?: File | null;
+    title?: string;
+    description?: string;
     files?: File | null;
 }
 
 function ResourceLibrary() {
     const [formFields, setFormFields] = useState<FormFields>({
-        text: '',
-        image: null,
+        title: '',
+        description:'',
         files: null,
     });
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const {name, value} = e.target;
         setFormFields({...formFields, [name]: value});
-    };
-
-    const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
-        const file = e.target.files?.[0] || null;
-        setFormFields({...formFields, image: file});
     };
 
     const handleFilesChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -34,22 +29,9 @@ function ResourceLibrary() {
         e.preventDefault();
         try {
             const newResourceRef = await database.collection('resources').add({
-                text: formFields.text,
-                createdAt: firestore.FieldValue.serverTimestamp(),
+                title: formFields.title,
+                description: formFields.description
             });
-
-            const imageId = newResourceRef.id;
-
-            if (formFields.image) {
-                const imageRef = storage.ref().child(`images/${imageId}`);
-                await imageRef.put(formFields.image);
-                const imageUrl = await imageRef.getDownloadURL();
-
-                await newResourceRef.update({
-                    imageUrl,
-                    createdAt: firestore.FieldValue.serverTimestamp(),
-                });
-            }
 
             const fileId = newResourceRef.id;
             if (formFields.files) {
@@ -59,10 +41,8 @@ function ResourceLibrary() {
 
                 await newResourceRef.update({
                     filesUrl,
-                    createdAt: firestore.FieldValue.serverTimestamp(),
                 });
             }
-
             console.log('Resource added successfully');
         } catch (error) {
             console.error('Error adding resource', error);
@@ -74,24 +54,24 @@ function ResourceLibrary() {
             <form onSubmit={handleSubmit}>
                 <div className="title">Add a resource</div>
                 <div>
-                    <label htmlFor="text">Text:</label>
+                    <label htmlFor="text">Title:</label>
                     <input
                         type="text"
-                        id="text"
-                        name="text"
-                        value={formFields.text}
+                        id="title"
+                        name="title"
+                        value={formFields.title}
                         onChange={handleChange}
                     />
                 </div>
 
                 <div>
-                    <label htmlFor="image">Image:</label>
+                    <label htmlFor="text">Description:</label>
                     <input
-                        type="file"
-                        id="image"
-                        name="image"
-                        accept="image/*"
-                        onChange={handleImageChange}
+                        type="text"
+                        id="description"
+                        name="description"
+                        value={formFields.description}
+                        onChange={handleChange}
                     />
                 </div>
 
