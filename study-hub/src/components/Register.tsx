@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { IUser } from '../dto/IUser';
+import React, {useState} from 'react';
+import {IUser} from '../dto/IUser';
 import './Register.css';
 import Chip from '@mui/material/Chip';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import {auth, database} from "../firebaseConfig";
 import firebase from "firebase/compat/app";
 import firestore = firebase.firestore;
@@ -15,7 +15,7 @@ const skills = [
     '.NET'
 ];
 
-function Register () {
+function Register() {
 
     const [user, setUser] = useState<IUser>({
         userName: '',
@@ -27,16 +27,17 @@ function Register () {
     });
 
     const [value, setValue] = useState<string[]>([]);
+    const [selectedRole, setSelectedRole] = useState<string>('');
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-        const { name, value } = e.target;
+        const {name, value} = e.target;
 
         if (name === 'userName' || name === 'userEmail' || name === 'userPass') {
-            setUser({ ...user, [name]: value });
+            setUser({...user, [name]: value});
         } else if (name === 'userRole') {
-            setUser({ ...user, userRole: value });
+            setUser({...user, userRole: value});
         } else if (name === 'userYear') {
-            setUser({ ...user, userYear: value });
+            setUser({...user, userYear: value});
         }
     };
 
@@ -77,17 +78,20 @@ function Register () {
                 <div className="title">Create an account</div>
                 <div>
                     <label htmlFor="name">Name:</label>
-                    <input type="text" id="name" name="userName" value={user.userName} onChange={handleChange} required />
+                    <input type="text" id="name" name="userName" value={user.userName} onChange={handleChange}
+                           required/>
                 </div>
 
                 <div>
                     <label htmlFor="email">Email:</label>
-                    <input type="email" id="email" name="userEmail" value={user.userEmail} onChange={handleChange} required />
+                    <input type="email" id="email" name="userEmail" value={user.userEmail} onChange={handleChange}
+                           required/>
                 </div>
 
                 <div>
                     <label htmlFor="password">Password:</label>
-                    <input type="password" id="password" name="userPass" value={user.userPass} onChange={handleChange} required />
+                    <input type="password" id="password" name="userPass" value={user.userPass} onChange={handleChange}
+                           required/>
                 </div>
 
                 <div>
@@ -113,30 +117,33 @@ function Register () {
                 </div>
 
                 <div>
-                    <label>Skills:</label>
-                    <Autocomplete
-                        multiple
-                        id="fixed-tags-demo"
-                        value={value}
-                        onChange={(event, newValue) => {
-                            setValue(newValue);
-                        }}
-                        options={skills}
-                        renderTags={(tagValue, getTagProps) =>
-                            tagValue.map((option, index) => (
-                                <Chip
-                                    label={option}
-                                    {...getTagProps({ index })}
-                                />
-                            ))
-                        }
-                        style={{ backgroundColor: 'white' }}
-                        renderInput={(params) => (
-                            <TextField {...params}/>
-                        )}
-                    />
+                    {user.userRole === 'Mentor' && (
+                        <>
+                            <label>Skills:</label>
+                            <Autocomplete
+                                multiple
+                                id="fixed-tags-demo"
+                                value={value}
+                                onChange={(event, newValue) => {
+                                    setValue(newValue);
+                                }}
+                                options={skills}
+                                renderTags={(tagValue, getTagProps) =>
+                                    tagValue.map((option, index) => (
+                                        <Chip
+                                            label={option}
+                                            {...getTagProps({index})}
+                                        />
+                                    ))
+                                }
+                                style={{backgroundColor: 'white'}}
+                                renderInput={(params) => (
+                                    <TextField {...params} />
+                                )}
+                            />
+                        </>
+                    )}
                 </div>
-
                 <button type="submit">Register</button>
                 <div className="prompt">
                     Already have an account?
