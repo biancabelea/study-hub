@@ -44,7 +44,6 @@ function Register () {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            // Create a new user in Firebase Authentication
             const authUser = await auth.createUserWithEmailAndPassword(user.userEmail, user.userPass);
             const userId = authUser.user?.uid;
             const userRef = database.collection('users').doc(userId);
@@ -70,9 +69,12 @@ function Register () {
         navigate('/login');
     }
 
+    const handleGoBackClick =()=>{
+        navigate('/');
+    }
+
     return (
         <div className="body-register">
-
             <form className="registration-form" onSubmit={handleSubmit}>
                 <div className="title">Create an account</div>
                 <div>
@@ -142,6 +144,10 @@ function Register () {
                     Already have an account?
                     <a className="redirect" onClick={() => handleLoginClick()}> Login</a>
                 </div>
+
+                <a className="go-back" onClick={()=> handleGoBackClick()}>
+                    <button>Back</button>
+                </a>
             </form>
         </div>
     );

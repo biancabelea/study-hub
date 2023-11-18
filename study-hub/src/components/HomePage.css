@@ -69,7 +69,7 @@ button:hover{
 
 .homeContent{
     background: rgb(20,33,61);
-    background: linear-gradient(180deg, rgba(20,33,61,1) 0%, rgba(229,229,229,1) 50%, rgba(252,163,17,1) 100%);
+    background: linear-gradient(180deg, rgba(20,33,61,1) 38%, rgba(229,229,229,1) 100%);
     position: absolute;
     text-align: center;
     width: 100%;

@@ -81,3 +81,8 @@ button:hover {
 .prompt {
     padding-top: 10px;
 }
+
+.go-back{
+    cursor: pointer;
+    color: var(--dark-blue);
+}

@@ -5,6 +5,7 @@ import Login from "./components/Login";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import ResourceLibrary from "./components/ResourceLibrary";
 import HomePage from "./components/HomePage";
+import SearchMentors from "./components/SearchMentors";
 
 function App() {
     return (
@@ -16,6 +17,7 @@ function App() {
                     <Route path='/login' element={<Login/>}/>
                     <Route path='/login' element={<Login/>}/>
                     <Route path='/resources' element={<ResourceLibrary/>}/>
+                    <Route path='/mentors-search' element={<SearchMentors/>}/>
                 </Routes>
             </BrowserRouter>
         </>

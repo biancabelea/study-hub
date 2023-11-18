@@ -42,7 +42,7 @@ const Login = () => {
             }
 
         } catch (error) {
-            console.error('Eroare la log in:', error);}
+            console.error('Error to log in:', error);}
     };
 
     const navigate = useNavigate();
