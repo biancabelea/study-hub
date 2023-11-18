@@ -1,19 +1,48 @@
 import React, { useState } from 'react';
-import { login } from '../api/authAPI';
 import './Login.css'
 import { useNavigate} from "react-router-dom";
+import {auth, database} from "../firebaseConfig";
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [loggedEmail, setLoggedEmail] = useState('');
+    const [loggedIn, setLoggedIn] = useState(false);
 
     const handleSubmit = async (event: React.SyntheticEvent) => {
         event.preventDefault();
         try {
-            const data = await login(email, password);
-            console.log(data);
+            const {user} = await auth.signInWithEmailAndPassword(email, password);
+            const userId = user?.uid
+
+            const userRef = database.collection('users').doc(userId)
+            const userDoc = await userRef.get();
+
+            if(userDoc.exists){
+                const userData = userDoc.data();
+                const userName = userData?.userName;
+                const userYear = userData?.userYear;
+                const userRole = userData?.userRole;
+                const userSkills = userData?.userSkills;
+
+
+                setLoggedEmail(email);
+                setEmail('');
+                setPassword('');
+                setLoggedIn(true);
+
+                if (typeof userId === "string") {
+                    localStorage.setItem('userId', userId);
+                }
+                localStorage.setItem('userName', userName);
+                localStorage.setItem('userYear', userYear);
+                localStorage.setItem('userRole', userRole);
+                localStorage.setItem('userSkills', userSkills);
+                navigate('/home');
+            }
+
         } catch (error) {
-            console.error(error);}
+            console.error('Eroare la log in:', error);}
     };
 
     const navigate = useNavigate();
