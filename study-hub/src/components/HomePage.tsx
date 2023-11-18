@@ -44,7 +44,7 @@ function HomePage() {
                     {
                         loggedIn ? (
                             <nav>
-                                <a href="/mentors" className="mentors-button">
+                                <a href="/mentors-search" className="mentors-button">
                                     <button>Search for mentors</button>
                                 </a>
                                 <a href="/resources" className="resources-button">
