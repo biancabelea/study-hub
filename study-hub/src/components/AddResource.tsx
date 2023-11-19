@@ -1,6 +1,8 @@
 import React, {useState, ChangeEvent, FormEvent} from 'react';
 import './AddResource.css';
 import {database, firestore, storage} from "../firebaseConfig";
+import {useNavigate} from "react-router-dom";
+import logo from "../imgs/img.png";
 
 interface FormFields {
     title?: string;
@@ -49,8 +51,16 @@ function AddResource() {
         }
     };
 
+    const navigate = useNavigate();
+    const NavigateAdd = () => {
+        navigate('/view-resources');
+    }
+
     return (
-        <div className="body-resources">
+        <>
+            <img className="logo" src={logo} alt="logo"></img>
+
+            <div className="body-resources">
             <form onSubmit={handleSubmit}>
                 <div className="title">Add a resource</div>
                 <div>
@@ -88,7 +98,9 @@ function AddResource() {
 
                 <button type="submit">Submit</button>
             </form>
+            <button onClick={NavigateAdd} className="back-button"> ← </button>
         </div>
+            </>
     );
 }
 
