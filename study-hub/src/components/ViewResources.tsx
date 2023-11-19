@@ -58,7 +58,7 @@ function ViewResources() {
 
     return (
         <div className="resources-page">
-            <div className="resources-title">Find resources</div>
+            <div className="resources-title">Explore resources</div>
             <div className="body-cards" style={{ display: 'flex', flexDirection: 'row', alignContent:'flex-start' }}>
                 {cardData.map((card) => (
 
