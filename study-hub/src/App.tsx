@@ -20,7 +20,7 @@ function App() {
                     <Route path='/register' element={<Register/>}/>
                     <Route path='/login' element={<Login/>}/>
                     <Route path='/view-resources' element={<ViewResources/>}/>
-                    <Route path='/resources' element={<AddResource/>}/>
+                    <Route path='/add-resource' element={<AddResource/>}/>
                     <Route path='/mentors-search' element={<SearchMentors/>}/>
                 </Routes>
             </BrowserRouter>

@@ -47,7 +47,7 @@ function HomePage() {
                                 <a href="/mentors-search" className="mentors-button">
                                     <button>Search for mentors</button>
                                 </a>
-                                <a href="/resources" className="resources-button">
+                                <a href="/view-resources" className="resources-button">
                                     <button>Resources</button>
                                 </a>
                             </nav>

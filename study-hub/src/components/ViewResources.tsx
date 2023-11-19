@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import CardComponent from './CardComponent';
 import { database, storage } from '../firebaseConfig';
+import {useNavigate} from 'react-router-dom';
 
 interface Resource {
     id: string;
@@ -12,6 +13,11 @@ interface Resource {
 
 function ViewResources() {
     const [cardData, setCardData] = useState<Resource[]>([]);
+
+    const navigate = useNavigate();
+    const NavigateAdd = () => {
+        navigate('/add-resource');
+    }
 
     useEffect(() => {
         const fetchData = async () => {
@@ -58,6 +64,7 @@ function ViewResources() {
 
                     <CardComponent key={card.id} id={card.id} title={card.title} description={card.description} file={card.downloadURL} />
                 ))}
+                <button onClick={NavigateAdd} className="add-button">+</button>
             </div>
         </div>
     );
