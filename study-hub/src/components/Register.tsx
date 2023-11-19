@@ -10,8 +10,30 @@ import firebase from "firebase/compat/app";
 
 const skills = [
     'React',
-    'Node',
-    '.NET'
+    'NodeJS',
+    '.NET',
+    'Java',
+    'Python',
+    'C++',
+    'JavaScript',
+    'Ruby',
+    'Swift',
+    'HTML',
+    'CSS',
+    'Angular',
+    'Vue',
+    'Django',
+    'REST API',
+    'Kotlin',
+    'Git',
+    'Agile',
+    'SQL',
+    'NoSQL',
+    'Docker',
+    'Data structures',
+    'Cybersecurity',
+    'Networking',
+    'Unit testing',
 ];
 
 function Register() {
@@ -128,7 +150,7 @@ function Register() {
                                 onChange={(event, newValue) => {
                                     setValue(newValue);
                                 }}
-                                options={skills}
+                                options={skills.sort()}
                                 renderTags={(tagValue, getTagProps) =>
                                     tagValue.map((option, index) => (
                                         <Chip
