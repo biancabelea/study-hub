@@ -23,11 +23,6 @@ const MentorCard: React.FC<MentorCardProps> = ({ id, name, email, skills }) => {
                 </Typography>
                 <Typography sx={{ mb: 1.5 }}>{skills.join(', ')}</Typography>
             </CardContent>
-            <CardActions className="button">
-                <Button size="small" href={`/mentor/${id}`} target="_blank" rel="noopener noreferrer">
-                    Contact mentor
-                </Button>
-            </CardActions>
         </Card>
     );
 };

@@ -125,9 +125,10 @@ function SearchMentors() {
                 <button type="submit">Search</button>
 
                 <div className="matching-mentors">
+                    <h2>Matching Mentors:</h2>
                     {matchingMentors.length > 0 ? (
-                        <>
-                            <h2>Matching Mentors:</h2>
+                        <div className="mentors-list">
+
                             {matchingMentors.map((mentor) => (
                                 <MentorCard
                                     key={mentor.id}
@@ -137,9 +138,9 @@ function SearchMentors() {
                                     skills={mentor.skills}
                                 />
                             ))}
-                        </>
+                        </div>
                     ) : (
-                        <h2>No mentors matched your criteria.</h2>
+                        <h3>No mentors matched your criteria.</h3>
                     )}
                 </div>
             </form>
