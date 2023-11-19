@@ -60,22 +60,3 @@ button {
 button:hover {
     background-color: var(--dark-blue);
 }
-
-
-.back-button{
-    position: fixed;
-    bottom: 40px;
-    left: 40px;
-    color: #ffffff;
-    border: none;
-    border-radius: 50%;
-    padding: 10px 15px 10px 15px;
-    font-size: 20px;
-    cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    margin: 0 40px 40px 0;
-}
-.back-button:hover {
-    color: var(--dark-blue);
-    background-color: var(--grey);
-}

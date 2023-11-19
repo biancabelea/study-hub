@@ -14,7 +14,7 @@ interface CardComponentProps {
 
 const CardComponent: React.FC<CardComponentProps> = ({id, title, description, file}) => {
     return (
-        <Card className="card" sx={{minWidth: 275, maxWidth: 275, minHeight:350, display:'grid'}}>
+        <Card className="card" sx={{minWidth: 275}}>
             <CardContent>
                 <Typography sx={{fontSize: 14}} gutterBottom>
                     {title}

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import MentorCard from './MentorCard';
 import { database } from '../firebaseConfig';
 import './MentorsList.css';
-import logo from "../imgs/img.png";
 
 export interface Mentor {
     id: string;
@@ -40,17 +39,14 @@ function MentorsList() {
     }, []);
 
     return (
-        <>
-            <img className="logo" src={logo} alt="logo"></img>
+        <div className="mentors-list">
             <div className="mentors-title">Mentors List</div>
-            <div className="mentors-list">
             <div className="mentors-cards" style={{ display: 'flex', flexDirection: 'row', alignContent: 'flex-start' }}>
                 {mentors.map((mentor) => (
                     <MentorCard key={mentor.id} id={mentor.id} name={mentor.name} email={mentor.email} skills={mentor.skills} />
                 ))}
             </div>
         </div>
-            </>
     );
 }
 
