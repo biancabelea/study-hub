@@ -12,17 +12,15 @@
 }
 
 .body-cards {
-    height: 100vh;
     background-color: var(--dark-blue);
     display: flex;
     gap: 16px;
-    justify-content: flex-start;
+    justify-content: center;
     flex-direction: row;
     align-content: space-around;
     flex-wrap: wrap;
-    align-items: center;
     padding: 120px;
-
+    align-items: center;
 }
 
 .resources-title {
