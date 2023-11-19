@@ -133,6 +133,7 @@ function Register() {
                         <option value="4th Bachelor">4th Bachelor</option>
                         <option value="1st Masters">1st Masters</option>
                         <option value="2nd Masters">2nd Masters</option>
+                        <option value="Other">Other</option>
                     </select>
                 </div>
 
