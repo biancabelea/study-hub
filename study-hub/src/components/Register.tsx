@@ -34,6 +34,12 @@ const skills = [
     'Cybersecurity',
     'Networking',
     'Unit testing',
+    'Physics',
+    'Computer programming',
+    'OOP',
+    'Mechanics',
+    'Statistics',
+    'Digital logic',
 ];
 
 function Register() {
