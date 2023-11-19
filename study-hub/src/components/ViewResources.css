@@ -16,11 +16,12 @@
     background-color: var(--dark-blue);
     display: flex;
     gap: 16px;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     flex-direction: row;
-    align-content: flex-start;
+    align-content: space-around;
     flex-wrap: wrap;
     padding-top: 100px;
+    align-items: center;
 }
 
 .resources-title {

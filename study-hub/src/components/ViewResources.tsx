@@ -42,7 +42,7 @@ function ViewResources() {
                 console.log('Card data length:', dataWithUrls.length);
                 setCardData(dataWithUrls);
             } catch (error) {
-                console.error('Error fetching data:', error);
+            console.error('Error fetching data:', error);
             }
         };
 
@@ -50,14 +50,15 @@ function ViewResources() {
 
     }, []); // Run this effect only once when the component mounts
 
-
-
     return (
-        <div className="cards-container" style={{ display: 'flex', flexDirection: 'column' }}>
-            {cardData.map((card) => (
+        <div className="resources-page">
+            <div className="resources-title">Find resources</div>
+            <div className="body-cards" style={{ display: 'flex', flexDirection: 'column' }}>
+                {cardData.map((card) => (
 
-                <CardComponent key={card.id} id={card.id} title={card.title} description={card.description} file={card.downloadURL} />
-            ))}
+                    <CardComponent key={card.id} id={card.id} title={card.title} description={card.description} file={card.downloadURL} />
+                ))}
+            </div>
         </div>
     );
 

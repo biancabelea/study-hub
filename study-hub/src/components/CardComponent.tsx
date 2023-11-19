@@ -14,24 +14,19 @@ interface CardComponentProps {
 
 const CardComponent: React.FC<CardComponentProps> = ({id, title, description, file}) => {
     return (
-        <div className="resources-page">
-            <div className="resources-title">Find resources</div>
-            <div className="body-cards">
-                <Card className="card" sx={{minWidth: 275}}>
-                    <CardContent>
-                        <Typography sx={{fontSize: 14}} gutterBottom>
-                            {title}
-                        </Typography>
-                        <Typography sx={{mb: 1.5}}>{description}</Typography>
-                    </CardContent>
-                    <CardActions className="button">
-                        <Button size="small" href={file} target="_blank" rel="noopener noreferrer">
-                            See file
-                        </Button>
-                    </CardActions>
-                </Card>
-            </div>
-        </div>
+        <Card className="card" sx={{minWidth: 275}}>
+            <CardContent>
+                <Typography sx={{fontSize: 14}} gutterBottom>
+                    {title}
+                </Typography>
+                <Typography sx={{mb: 1.5}}>{description}</Typography>
+            </CardContent>
+            <CardActions className="button">
+                <Button size="small" href={file} target="_blank" rel="noopener noreferrer">
+                    See file
+                </Button>
+            </CardActions>
+        </Card>
     );
 };
 
