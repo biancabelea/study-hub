@@ -19,13 +19,16 @@
 }
 
 .mentors-title {
-    background-color: var(--orange);
+    color: white;
+    background-color: var(--dark-blue);
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    font-size: 30px;
+    font-size: 50px;
     z-index: 3;
+    height: 50px;
+    padding-top: 30px;
 }
 
 .mentors-cards {
