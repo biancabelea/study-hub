@@ -1,5 +1,5 @@
 import React, {useState, ChangeEvent, FormEvent} from 'react';
-import './ResourceLibrary.css';
+import './AddResource.css';
 import {database, firestore, storage} from "../firebaseConfig";
 
 interface FormFields {
@@ -8,7 +8,7 @@ interface FormFields {
     files?: File | null;
 }
 
-function ResourceLibrary() {
+function AddResource() {
     const [formFields, setFormFields] = useState<FormFields>({
         title: '',
         description:'',
@@ -92,4 +92,4 @@ function ResourceLibrary() {
     );
 }
 
-export default ResourceLibrary;
+export default AddResource;

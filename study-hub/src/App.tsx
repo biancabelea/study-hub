@@ -3,7 +3,7 @@ import './App.css';
 import Register from "./components/Register";
 import Login from "./components/Login";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import ResourceLibrary from "./components/ResourceLibrary";
+import AddResource from "./components/AddResource";
 import HomePage from "./components/HomePage";
 
 import SearchMentors from "./components/SearchMentors";
@@ -20,7 +20,7 @@ function App() {
                     <Route path='/register' element={<Register/>}/>
                     <Route path='/login' element={<Login/>}/>
                     <Route path='/view-resources' element={<ViewResources/>}/>
-                    <Route path='/resources' element={<ResourceLibrary/>}/>
+                    <Route path='/resources' element={<AddResource/>}/>
                     <Route path='/mentors-search' element={<SearchMentors/>}/>
                 </Routes>
             </BrowserRouter>
