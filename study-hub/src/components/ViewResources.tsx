@@ -1,46 +1,66 @@
-import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { Button, CardActionArea, CardActions } from '@mui/material';
-import './ViewResources.css';
+import React, { useEffect, useState } from 'react';
+import CardComponent from './CardComponent';
+import { database, storage } from '../firebaseConfig';
+
+interface Resource {
+    id: string;
+    title: string;
+    description: string;
+    filesUrl: string;
+    downloadURL: string;
+}
 
 function ViewResources() {
-    const cardData = [
-        {
-            title: 'Card 1',
-            image: '../imgs/img.png',
-            description: 'Description for card 1...',
-        },
-        {
-            title: 'Card 2',
-            image: '/static/images/cards/contemplative-reptile.jpg',
-            description: 'Description for card 2...',
-        },
-        // Add more card data as needed
-    ];
+    const [cardData, setCardData] = useState<Resource[]>([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const snapshot = await database.collection('resources').get();
+                const fetchedData: Resource[] = [];
+
+                snapshot.forEach((doc) => {
+                    const data = doc.data();
+                    fetchedData.push({
+                        id: doc.id,
+                        title: data.title,
+                        description: data.description,
+                        filesUrl: data.filesUrl,
+                        downloadURL: '',
+                    });
+                });
+
+                const dataWithUrls = await Promise.all(
+                    fetchedData.map(async (resource) => {
+                        if (resource.filesUrl) {
+                            const downloadURL = await storage.refFromURL(resource.filesUrl).getDownloadURL();
+                            return { ...resource, downloadURL };
+                        }
+                        return resource;
+                    })
+                );
+                console.log('Card data length:', dataWithUrls.length);
+                setCardData(dataWithUrls);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchData(); // Call the async function directly
+
+    }, []); // Run this effect only once when the component mounts
+
+
 
     return (
-        <div className="resources-page">
-            <div className="resources-title">Find resources</div>
-            <div className="body-cards">
-                {cardData.map((card, index) => (
-                    <Card className="card" key={index} sx={{ minWidth: 275 }}>
-                        <CardContent>
-                            <Typography sx={{ fontSize: 14 }} gutterBottom>
-                                {card.title}
-                            </Typography>
-                            <Typography sx={{ mb: 1.5 }}>{card.description}</Typography>
-                        </CardContent>
-                        <CardActions className="button">
-                            <Button size="small">See file</Button>
-                        </CardActions>
-                    </Card>
-                ))}
-            </div>
+        <div className="cards-container" style={{ display: 'flex', flexDirection: 'column' }}>
+            {cardData.map((card) => (
+
+                <CardComponent key={card.id} id={card.id} title={card.title} description={card.description} file={card.downloadURL} />
+            ))}
         </div>
     );
+
 }
 
 export default ViewResources;

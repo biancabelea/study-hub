@@ -7,7 +7,6 @@ import Autocomplete from '@mui/material/Autocomplete';
 import {useNavigate} from 'react-router-dom';
 import {auth, database} from "../firebaseConfig";
 import firebase from "firebase/compat/app";
-import firestore = firebase.firestore;
 
 const skills = [
     'React',
@@ -57,7 +56,7 @@ function Register() {
             };
 
             await userRef.set(userData)
-
+            navigate('/login');
             console.log('Registration successful', authUser);
         } catch (error) {
             console.error('Registration failed', error);
