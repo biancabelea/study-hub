@@ -3,7 +3,7 @@ import MentorCard from './MentorCard';
 import { database } from '../firebaseConfig';
 import './MentorsList.css';
 
-interface Mentor {
+export interface Mentor {
     id: string;
     name: string;
     email: string;

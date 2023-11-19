@@ -1,8 +1,10 @@
-import React, {FormEvent, useState} from "react";
+import React, {FormEvent, useEffect, useState} from "react";
 import './SearchMentors.css';
 import Autocomplete from "@mui/material/Autocomplete";
 import Chip from "@mui/material/Chip";
 import TextField from "@mui/material/TextField";
+import {database} from "../firebaseConfig";
+import { Mentor } from "./MentorsList";
 
 const skills = [
     'React',
@@ -40,12 +42,55 @@ const skills = [
 
 function SearchMentors() {
     const [selectedSkills, setSelectedSkills] = useState<string[]>([]);
+    const [mentors, setMentors] = useState<Mentor[]>([]);
 
+    useEffect(() => {
+        const fetchMentors = async () => {
+            try {
+                const snapshot = await database.collection('users').where('userRole', '==', 'Mentor').get();
+                const fetchedMentors: Mentor[] = [];
+
+                snapshot.forEach((doc) => {
+                    const data = doc.data();
+                    fetchedMentors.push({
+                        id: doc.id,
+                        name: data.userName,
+                        email: data.userEmail,
+                        skills: data.userSkills
+                    });
+                });
+                console.log("Fetched mentors", fetchedMentors)
+                setMentors(fetchedMentors);
+            } catch (error) {
+                console.error('Error fetching mentors:', error);
+            }
+        };
+
+        fetchMentors();
+    }, []);
     const handleSearchClick = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault(); // Previne reîncărcarea paginii la submit
-        // Aici ar fi logica de căutare pe baza skill-urilor selectate
+        event.preventDefault();
         console.log('Searching for mentors with skills:', selectedSkills);
-        // Implementează interogarea serverului sau filtrarea locală aici
+        let matchingMentors:any[] = [];
+        mentors.forEach( m => {
+            var count = 0;
+            selectedSkills.forEach( s => {
+
+            if (m.skills.includes(s)) {
+                count++;
+            }
+
+          
+            });
+            console.log("percentage", (count / selectedSkills.length) * 100);
+        console.log("count", count);
+        console.log("selected skills", selectedSkills.length)
+            if (((count / selectedSkills.length) * 100) >= 50) {
+                matchingMentors = [...matchingMentors, m];
+
+            }
+        });
+        console.log("matching mentors:", matchingMentors);
     };
 
 
