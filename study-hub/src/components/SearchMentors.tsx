@@ -6,8 +6,36 @@ import TextField from "@mui/material/TextField";
 
 const skills = [
     'React',
-    'Node',
-    '.NET'
+    'NodeJS',
+    '.NET',
+    'Java',
+    'Python',
+    'C++',
+    'JavaScript',
+    'Ruby',
+    'Swift',
+    'HTML',
+    'CSS',
+    'Angular',
+    'Vue',
+    'Django',
+    'REST API',
+    'Kotlin',
+    'Git',
+    'Agile',
+    'SQL',
+    'NoSQL',
+    'Docker',
+    'Data structures',
+    'Cybersecurity',
+    'Networking',
+    'Unit testing',
+    'Physics',
+    'Computer programming',
+    'OOP',
+    'Mechanics',
+    'Statistics',
+    'Digital logic',
 ];
 
 function SearchMentors() {
@@ -34,7 +62,7 @@ function SearchMentors() {
                 onChange={(event, newValue) => {
                     setSelectedSkills(newValue);
                 }}
-                options={skills}
+                options={skills.sort()}
                 renderTags={(tagValue, getTagProps) =>
                     tagValue.map((option, index) => (
                         <Chip
