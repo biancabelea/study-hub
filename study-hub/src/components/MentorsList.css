@@ -1,0 +1,43 @@
+:root {
+    --white: #ffffff;
+    --grey: #e5e5e5;
+    --orange: #fca311;
+    --dark-blue: #14213d;
+    --black: #000000;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.mentors-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+.mentors-title {
+    background-color: var(--orange);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    font-size: 30px;
+    z-index: 3;
+}
+
+.mentors-cards {
+    height: 100vh;
+    background-color: var(--dark-blue);
+    display: flex;
+    gap: 16px;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-content: space-around;
+    flex-wrap: wrap;
+    padding-top: 100px;
+    align-items: center;
+    color: white;
+}
