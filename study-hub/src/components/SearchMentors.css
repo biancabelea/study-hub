@@ -9,6 +9,7 @@
 .form-search{
     padding: 100px 50px 100px 50px;
     display: flex;
+    min-width: 50rem;
 }
 
 .title {
@@ -18,4 +19,36 @@
     align-items: center;
     font-size: 30px;
     margin-bottom: 50px;
+}
+
+.matching-mentors {
+    display : flex;
+    flex-direction: column;
+    column-count: 2;
+    column-gap: 16px; /* Adjust the gap as needed */
+}
+
+.matching-mentors h2 {
+    width: 100%;
+    break-inside: avoid-column; /* Ensure h2 stays within one column */
+    margin: 20px 0 10px 0;
+}
+
+.matching-mentors .mentor-card {
+    column-count: 1; /* Switch to a single column on smaller screens */
+}
+.matching-mentors .mentors-list {
+    display: grid;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-content: space-around;
+    align-items: center;
+    justify-items: stretch;
+    column-gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+
+}
+.matching-mentors .mentor-list .MuiPaper-root
+{
+    height: 200px;
 }

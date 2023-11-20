@@ -61,10 +61,9 @@ button:hover {
     background-color: var(--dark-blue);
 }
 
-
 .back-button{
     position: fixed;
-    bottom: 40px;
+    top: 40px;
     left: 40px;
     color: #ffffff;
     border: none;
@@ -79,3 +78,4 @@ button:hover {
     color: var(--dark-blue);
     background-color: var(--grey);
 }
+

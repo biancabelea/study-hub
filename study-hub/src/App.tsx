@@ -9,7 +9,6 @@ import HomePage from "./components/HomePage";
 import SearchMentors from "./components/SearchMentors";
 
 import ViewResources from "./components/ViewResources";
-import MentorsList from "./components/MentorsList";
 
 function App() {
     return (
@@ -22,7 +21,6 @@ function App() {
                     <Route path='/view-resources' element={<ViewResources/>}/>
                     <Route path='/add-resource' element={<AddResource/>}/>
                     <Route path='/mentors-search' element={<SearchMentors/>}/>
-                    <Route path='/mentors' element={<MentorsList/>}/>
                 </Routes>
             </BrowserRouter>
         </>

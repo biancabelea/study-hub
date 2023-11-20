@@ -7,7 +7,6 @@ import Autocomplete from '@mui/material/Autocomplete';
 import {useNavigate} from 'react-router-dom';
 import {auth, database} from "../firebaseConfig";
 import firebase from "firebase/compat/app";
-import logo from "../imgs/img.png";
 
 const skills = [
     'React',
@@ -103,9 +102,7 @@ function Register() {
     }
 
     return (
-        <>
-            <img className="logo" src={logo} alt="logo"></img>
-            <div className="body-register">
+        <div className="body-register">
             <form className="registration-form" onSubmit={handleSubmit}>
                 <div className="title">Create an account</div>
                 <div>
@@ -136,6 +133,7 @@ function Register() {
                         <option value="4th Bachelor">4th Bachelor</option>
                         <option value="1st Masters">1st Masters</option>
                         <option value="2nd Masters">2nd Masters</option>
+                        <option value="Other">Other</option>
                     </select>
                 </div>
 
@@ -187,7 +185,6 @@ function Register() {
                 </a>
             </form>
         </div>
-        </>
     );
 };
 
